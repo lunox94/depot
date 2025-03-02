@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "rails_demo",
+            "database": "/Users/lunox94/OrbStack/docker/volumes/ruby-rails-postgres/ruby-rails-postgres/depot/storage/development.sqlite3"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
