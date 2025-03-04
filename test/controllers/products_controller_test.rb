@@ -9,11 +9,22 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get products_url
     assert_response :success
+
+    assert_select "tbody tr", 3
   end
 
   test "should get new" do
     get new_product_url
     assert_response :success
+  end
+
+  test "should show validation errors on new product" do
+    post products_url, params: {
+      product: Product.new.attributes
+    }
+
+    assert_response :unprocessable_entity
+    assert_select "div#error_explanation"
   end
 
   test "should create product" do
@@ -51,6 +62,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       }
     }
     assert_redirected_to product_url(@product)
+  end
+
+  test "should show validation errors on update product" do
+    patch product_url(@product), params: {
+      product: Product.new.attributes
+    }
+
+    assert_response :unprocessable_entity
+    assert_select "div#error_explanation"
   end
 
   test "should destroy product" do
