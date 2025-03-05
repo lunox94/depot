@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+  has_many :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
+
   has_one_attached :image
   after_commit -> { broadcast_refresh_later_to "products" }
   validate :acceptable_image
@@ -16,4 +20,14 @@ class Product < ApplicationRecord
       errors.add(:image, "must be a JPG, GIF or PNG image")
     end
   end
+
+  private
+
+    # ensure that there are no line items referencing this product
+    def ensure_not_referenced_by_any_line_item
+      unless line_items.empty?
+        errors.add(:base, "Line items present")
+        throw :abort
+      end
+    end
 end
