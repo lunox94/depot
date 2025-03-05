@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+  include Counter
   include CurrentCart
 
   before_action :set_cart, only: %i[ create ]
@@ -29,6 +30,8 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
+        reset_counter
+
         format.html { redirect_to @line_item.cart, notice: "Line item was successfully created." }
         format.json { render :show, status: :created, location: @line_item }
       else
