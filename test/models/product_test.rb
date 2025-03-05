@@ -64,4 +64,12 @@ class ProductTest < ActiveSupport::TestCase
 
     assert product.valid?
   end
+
+  test "should not destroy product" do
+    assert_raise ActiveRecord::RecordNotDestroyed do
+      products(:two).destroy!
+    end
+
+    assert Product.exists?(products(:two).id)
+  end
 end
