@@ -6,7 +6,13 @@
     </p>
   <% end %>
 
-  <h1 class="text-xl font-bold mb-6 border-b-2 pb-2">Your Pragmatic Catalog</h1>
+  <h1 class="text-xl font-bold">Your Pragmatic Catalog</h1>
+
+  <% if @counter > 5 %>
+    <p class="text-gray-500 italic">You have visited the catalog <%= pluralize(@counter, "time")%> without adding a product to the cart.</p>
+  <% end %>
+
+  <div class="mb-6 border-b-2 pb-2"></div>
 
   <ul>
     <% cache @products do %>
