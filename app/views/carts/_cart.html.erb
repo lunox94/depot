@@ -2,7 +2,7 @@
     <h2 class="text-lg font-bold mb-3">Your Pragmatic Cart</h2>
 
     <ul class="list-none list-inside">
-        <% @cart.line_items.each do |item| %>
+        <% cart.line_items.each do |item| %>
             <li><%= item.quantity %> &times; <%= item.product.title %></li>
         <% end %>
     </ul>
