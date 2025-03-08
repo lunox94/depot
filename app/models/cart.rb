@@ -8,6 +8,7 @@ class Cart < ApplicationRecord
       line_item.quantity += 1
     else
       line_item = line_items.build(product_id: product.id)
+      line_item.price = product.price
     end
 
     line_item
