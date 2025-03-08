@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
   include Counter
   include CurrentCart
 
-  before_action :set_cart, only: %i[ create ]
+  before_action :set_cart, only: %i[ create destroy ]
   before_action :set_line_item, only: %i[ show edit update destroy ]
 
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_line_item
@@ -61,7 +61,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy!
 
     respond_to do |format|
-      format.html { redirect_to line_items_path, status: :see_other, notice: "Line item was successfully destroyed." }
+      format.html { redirect_to @cart, status: :see_other, notice: "Line item was successfully removed." }
       format.json { head :no_content }
     end
   end
