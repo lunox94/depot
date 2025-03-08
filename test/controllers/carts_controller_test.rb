@@ -24,6 +24,9 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show cart" do
+    post line_items_url, params: { product_id: products(:pragprog).id }
+    @cart = Cart.find(session[:cart_id])
+
     get cart_url(@cart)
     assert_response :success
   end
