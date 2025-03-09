@@ -3,15 +3,7 @@
 
     <table class="table-auto">
         <tbody>
-            <% cart.line_items.each do |item| %>
-                <tr class="h-12">
-                    <td class="text-right"><%= item.quantity %></td>
-                    <td>&times;</td>
-                    <td class="pr-2"><%= item.product.title %></td>
-                    <td class="text-right font-bold"><%= number_to_currency item.total_price, unit: "€" %></td>
-                    <td><%= button_to "Remove", item, method: :delete, class: "py-1 px-2 bg-red-600 rounded-lg text-white ml-4 cursor-pointer" %></td>
-                </tr>
-            <% end %>
+            <%= render cart.line_items %>
         </tbody>
 
         <tfoot>

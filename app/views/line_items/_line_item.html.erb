@@ -1,10 +1,7 @@
-<div id="<%= dom_id line_item %>" class="my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Product:</strong>
-    <%= line_item.product_id %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Cart:</strong>
-    <%= line_item.cart_id %>
-  </div>
-</div>
+<tr class="h-12">
+    <td class="text-right"><%= line_item.quantity %></td>
+    <td>&times;</td>
+    <td class="pr-2"><%= line_item.product.title %></td>
+    <td class="text-right font-bold"><%= number_to_currency line_item.total_price, unit: "€" %></td>
+    <td><%= button_to "Remove", line_item, method: :delete, class: "py-1 px-2 bg-red-600 rounded-lg text-white ml-4 cursor-pointer" %></td>
+</tr>
