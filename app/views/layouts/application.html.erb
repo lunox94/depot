@@ -29,9 +29,12 @@
     </header>
     <section class="flex">
       <nav class="bg-green-900 p-6">
-        <div class="bg-white p-2 rounded">
-          <%= render @cart %>
-        </div>
+        <% if @cart and @cart.line_items.any? %>
+          <div class="bg-white p-2 rounded">
+            <%= render @cart %>
+          </div>
+        <% end %>
+
         <ul class="text-gray-300 leading-8">
           <li><a href="/">Home</a></li>
           <li><a href="/questions">Questions</a></li>
