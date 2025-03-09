@@ -1,4 +1,8 @@
+<% if line_item == @current_item %>
+<tr class="line-item-highlight h-12">
+<% else %>
 <tr class="h-12">
+<% end %>
     <td class="text-right"><%= line_item.quantity %></td>
     <td>&times;</td>
     <td class="pr-2"><%= line_item.product.title %></td>
