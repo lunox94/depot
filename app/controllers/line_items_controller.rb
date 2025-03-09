@@ -34,14 +34,7 @@ class LineItemsController < ApplicationController
       if @line_item.save
         reset_counter
 
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(
-            :cart,
-            partial: "layouts/cart",
-            locals: { cart: @cart }
-          )
-        end
-
+        format.turbo_stream
         format.html { redirect_to store_index_url }
         format.json { render :show, status: :created, location: @line_item }
       else
