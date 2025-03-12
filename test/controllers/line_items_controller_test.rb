@@ -55,6 +55,23 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
       delete line_item_url(@line_item)
     end
 
-    assert_redirected_to cart_url(session[:cart_id])
+    assert_redirected_to store_index_url
+  end
+
+  test "should reduce quantity by one" do
+    @line_item = line_items(:two)
+    assert @line_item.quantity > 1, "Line item quantity must be greater than 1 for this test"
+
+    expected_quantity = @line_item.quantity - 1
+
+    assert_no_difference "LineItem.count" do
+      delete line_item_url(@line_item)
+    end
+
+    @line_item.reload  # Reload from DB to reflect changes
+
+    assert_equal expected_quantity, @line_item.quantity, "Quantity was not decremented"
+
+    assert_redirected_to store_index_url
   end
 end
