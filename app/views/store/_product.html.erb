@@ -1,6 +1,9 @@
 <%= turbo_frame_tag(dom_id(product)) do %>
   <li class="flex mb-6">
-    <%= image_tag product.image, class: 'w-40 h-48 mr-6 shadow object-contain' %>
+    <%= button_to line_items_path(product_id: product), class: "w-40 h-48 mr-6 shadow cursor-pointer" do %>
+      <%= image_tag product.image, class: 'w-full h-full object-contain' %>
+    <% end %>
+    
     <div>
       <h2 class="font-bold text-lg mb-3"><%= product.title %></h2>
       
