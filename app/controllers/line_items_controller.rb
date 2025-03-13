@@ -67,6 +67,7 @@ class LineItemsController < ApplicationController
     end
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to store_index_path, status: :see_other, notice: "Line item was successfully removed." }
       format.json { head :no_content }
     end

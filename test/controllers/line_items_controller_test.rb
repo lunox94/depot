@@ -74,4 +74,19 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to store_index_url
   end
+
+  test "should destroy line_item via turbo stream" do
+    2.times do
+      post line_items_url, params: { product_id: products(:pragprog).id }
+    end
+
+    line_item = Cart.find(session[:cart_id]).line_items.first
+
+    assert_no_difference "LineItem.count" do
+      delete line_item_url(line_item), as: :turbo_stream
+    end
+
+    assert_response :success
+    assert_match (/<tr class="h-12">/), @response.body
+  end
 end
