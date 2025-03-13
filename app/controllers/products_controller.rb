@@ -42,7 +42,11 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
 
-        @product.broadcast_replace_later_to "store/products", partial: "store/product"
+        @product.broadcast_replace_later_to(
+          "store/products",
+          partial: "store/product",
+          locals: { product: @product, updated_product: @product }
+        )
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
