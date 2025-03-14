@@ -11,3 +11,9 @@ two:
   cart: two
   price: 9.99
   quantity: 2
+
+three:
+  product: two
+  order: one
+  price: 10.99
+  quantity: 1
