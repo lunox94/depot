@@ -17,6 +17,6 @@
     <div class="flex mt-1">
         <%= button_to "Empty Cart", cart, method: :delete, class: "bg-green-600 py-1 px-2 ml-4 text-white rounded-lg cursor-pointer" %>
 
-        <%= button_to "Check Out", new_order_path, class: "bg-green-200 py-1 px-2 ml-4 text-black rounded-lg cursor-pointer" %>
+        <%= button_to "Check Out", new_order_path, method: :get, class: "bg-green-200 py-1 px-2 ml-4 text-black rounded-lg cursor-pointer" %>
     </div>
 </div>
