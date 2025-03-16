@@ -5,6 +5,8 @@ one:
   address: MyText
   pay_type: Check
   email: john@example.com
+  routing_number: MyText
+  account_number: MyText
 
 two:
   name: Mario Thompson

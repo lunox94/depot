@@ -73,7 +73,18 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.expect(order: [ :name, :address, :pay_type, :email ])
+      base_params = params.require(:order).permit(:name, :address, :email, :pay_type)
+
+      case base_params[:pay_type]
+      when "Credit card"
+        base_params.merge!(params.require(:order).permit(:credit_card_number, :expiration_date))
+      when "Check"
+        base_params.merge!(params.require(:order).permit(:routing_number, :account_number))
+      when "Purchase order"
+        base_params.merge!(params.require(:order).permit(:po_number))
+      end
+
+      base_params
     end
 
     def ensure_cart_isnt_empty
