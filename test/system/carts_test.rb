@@ -22,4 +22,14 @@ class CartsTest < ApplicationSystemTestCase
 
     assert_no_selector "#cart"
   end
+
+  test "yellow fade technique for line items works" do
+    visit store_index_url
+
+    assert has_no_css? ".line-item-highlight"
+
+    click_on "Add to Cart", match: :first
+
+    assert has_css? ".line-item-highlight"
+  end
 end
