@@ -48,8 +48,8 @@ class Order < ApplicationRecord
       payment_details: payment_details
     )
 
-    if payment_result.success?
-      OrderMailer.received(self)
+    if payment_result.succeeded?
+      OrderMailer.received(self).deliver_later
     else
       raise payment_result.error
     end
