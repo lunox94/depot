@@ -33,7 +33,15 @@
     <%= form.password_field :password_confirmation, class: "input-field" %>
   </div>
 
+  <% if user.persisted? %>
+  <div class="my-5">
+    <%= form.label :password_challenge, "Current Password:" %>
+    <%= form.password_field :password_challenge, class: "input-field" %>
+  </div>
+  <% end %>
+
   <div class="inline">
     <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
+
 <% end %>
