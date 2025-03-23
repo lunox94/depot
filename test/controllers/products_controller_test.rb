@@ -89,4 +89,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert Product.exists?(products(:two).id)
   end
+
+  test "should redirect to login page if not signed in" do
+    logout
+
+    get products_url
+
+    assert_redirected_to new_session_url
+  end
 end

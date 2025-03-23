@@ -18,5 +18,9 @@ module ActiveSupport
         password: "password"
       }
     end
+
+    def logout
+      delete session_path
+    end
   end
 end
