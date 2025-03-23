@@ -1,7 +1,7 @@
 <div class="w-full">
   <%= render 'notice' %>
 
-  <h1 class="text-xl font-bold">Your Pragmatic Catalog</h1>
+  <h1 class="text-xl font-bold"><%= t(".title_html") %></h1>
 
   <%= turbo_stream_from 'store/products' %>
 
