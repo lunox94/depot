@@ -10,35 +10,35 @@ class OrdersTest < ApplicationSystemTestCase
 
     click_on "Checkout"
 
-    assert has_no_field? "Routing number"
-    assert has_no_field? "Account number"
-    assert has_no_field? "Credit card number"
-    assert has_no_field? "Expiration date"
-    assert has_no_field? "Po number"
+    assert has_no_field? "Routing #"
+    assert has_no_field? "Account #"
+    assert has_no_field? "CC #"
+    assert has_no_field? "Expiry"
+    assert has_no_field? "PO #"
 
-    select "Check", from: "Pay type"
+    select "Check", from: "Pay with"
 
-    assert has_field? "Routing number"
-    assert has_field? "Account number"
-    assert has_no_field? "Credit card number"
-    assert has_no_field? "Expiration date"
-    assert has_no_field? "Po number"
+    assert has_field? "Routing #"
+    assert has_field? "Account #"
+    assert has_no_field? "CC #"
+    assert has_no_field? "Expiry"
+    assert has_no_field? "PO #"
 
-    select "Credit card", from: "Pay type"
+    select "Credit Card", from: "Pay with"
 
-    assert has_no_field? "Routing number"
-    assert has_no_field? "Account number"
-    assert has_field? "Credit card number"
-    assert has_field? "Expiration date"
-    assert has_no_field? "Po number"
+    assert has_no_field? "Routing #"
+    assert has_no_field? "Account #"
+    assert has_field? "CC #"
+    assert has_field? "Expiry"
+    assert has_no_field? "PO #"
 
-    select "Purchase order", from: "Pay type"
+    select "Purchase Order", from: "Pay with"
 
-    assert has_no_field? "Routing number"
-    assert has_no_field? "Account number"
-    assert has_no_field? "Credit card number"
-    assert has_no_field? "Expiration date"
-    assert has_field? "Po number"
+    assert has_no_field? "Routing #"
+    assert has_no_field? "Account #"
+    assert has_no_field? "CC #"
+    assert has_no_field? "Expiry"
+    assert has_field? "PO #"
   end
 
   test "check order and delivery" do
@@ -53,11 +53,11 @@ class OrdersTest < ApplicationSystemTestCase
 
     fill_in "Name", with: "John Doe"
     fill_in "Address", with: "100 Main Street"
-    fill_in "Email", with: "john@example.com"
+    fill_in "E-mail", with: "john@example.com"
 
-    select "Check", from: "Pay type"
-    fill_in "Routing number", with: "1234"
-    fill_in "Account number", with: "5678"
+    select "Check", from: "Pay with"
+    fill_in "Routing #", with: "1234"
+    fill_in "Account #", with: "5678"
 
     click_button "Place Order"
     assert_text "Thank you for your order"

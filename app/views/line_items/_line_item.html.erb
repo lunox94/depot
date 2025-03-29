@@ -7,5 +7,9 @@
     <td>&times;</td>
     <td class="pr-2"><%= line_item.product.title %></td>
     <td class="text-right font-bold"><%= number_to_currency line_item.total_price %></td>
-    <td><%= button_to "–", line_item_path(id: line_item.id), method: :delete, class: "py-1 px-2 bg-red-600 rounded-lg text-white ml-4 cursor-pointer" %></td>
+    <% if defined?(line_item_path) %>
+      <td><%= button_to "–", line_item_path(id: line_item.id), method: :delete, class: "py-1 px-2 bg-red-600 rounded-lg text-white ml-4 cursor-pointer" %></td>
+    <% else %>
+      <td></td>
+    <% end %>
 </tr>

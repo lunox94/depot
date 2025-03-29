@@ -11,7 +11,7 @@ class StoreControllerTest < ActionDispatch::IntegrationTest
     assert_select "nav a", minimum: 4
     assert_select "main ul li", 3
     assert_select "h2", "The Pragmatic Programmer"
-    assert_select "div", /€[,\d]+\.\d\d/
+    assert_select "div", /\$[,\d]+\.\d\d/
   end
 
   test "should display date and time" do
