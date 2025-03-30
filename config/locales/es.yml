@@ -8,6 +8,11 @@ es:
         name: Nombre
         email: E-mail
         pay_type: Forma de pago
+        credit_card_number: Número de tarjeta de crédito
+        expiration_date: Fecha de expiración
+        routing_number: "# de enrutamiento"
+        account_number: "# de cuenta"
+        po_number: "# de orden de compra"
     errors:
       messages:
         inclusion: no está incluido en la lista
