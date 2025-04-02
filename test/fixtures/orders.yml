@@ -13,3 +13,20 @@ two:
   address: MyText
   pay_type: Credit Card
   email: mario@example.com
+
+david_order:
+  name: David
+  address: 123 Main St
+  pay_type: Purchase Order
+  email: david@example.com
+  po_number: ZX123
+  created_at: <%= 3.days.ago %>
+
+david_second_order:
+  name: David
+  address: 123 Main St
+  pay_type: Check
+  routing_number: WA123
+  account_number: BA123
+  email: david@example.com
+  created_at: <%= 2.days.ago %>
